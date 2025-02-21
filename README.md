@@ -73,4 +73,4 @@ If you would like to contribute to this project, please fork the repository and 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
-- Credit to leetcipher (https://github.com/leetCipher) for the base Python and C++ code. This repo improves his work to automate into a simple command line tool.
+- Credit to leetcipher (https://github.com/leetCipher) for the base C++ code.
