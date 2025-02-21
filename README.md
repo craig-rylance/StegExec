@@ -1,7 +1,7 @@
 # StegExec 🚀
 
 ## Overview
-StegExec is a fully automated Proof of Concept for embedding XOR-encrypted shellcode within an image file. The project encrypts the shellcode, injects it into the image, and compiles a custom C++ executable that, when launched, locates, decrypts, and executes the shellcode. This project demonstrates file steganography, memory manipulation, and antivirus evasion techniques for educational purposes. 
+StegExec (Steganography Executor) is a fully automated Proof of Concept for embedding XOR-encrypted shellcode within an image file. The project encrypts the shellcode, injects it into the image, and compiles a custom C++ executable that, when launched, locates, decrypts, and executes the shellcode. This project demonstrates file steganography, memory manipulation, and antivirus evasion techniques for educational purposes. 
 
 NOTE: I made this to learn more about steganography and antivirus evasion for my own career development. This is not intended to be used for malicious purposes.
 
