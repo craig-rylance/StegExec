@@ -81,7 +81,7 @@ void extractAndExecShellcode(HMODULE hModule){
 }
 
 int main(int argc, char **argv){
-    // Geting process instance
+    // Getting process instance
     HMODULE hModule = GetModuleHandle(NULL);
     if(!hModule){
         printf("Failed to get module handle. Error: %u\n", GetLastError());
