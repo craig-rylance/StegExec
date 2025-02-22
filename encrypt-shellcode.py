@@ -1,14 +1,15 @@
 import sys
 
-if len(sys.argv) != 2:
-    print("Error: shellcode not supplied to python script")
+if len(sys.argv) != 3:
+    print("Useage: python3 encrypt-shellcode.py [key] '[shellcode]'")
+    print("Exiting...")
     sys.exit(1)
 
-shellcode = sys.argv[1]
+key = sys.argv[1]
+shellcode = sys.argv[2]
 
 shellcode_bytes = [int(b, 16) for b in shellcode.split()]
 
-key = "supersecretkey"
 encrypted_shellcode = []
 
 # XOR Encrypt Shellcode

